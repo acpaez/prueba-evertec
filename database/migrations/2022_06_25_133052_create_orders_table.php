@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('product_name');
             $table->double('product_price');
             $table->integer('product_quantity');
+            $table->string('reference');
             $table->double('total');
             $table->string('request_id')->nullable(true);
             $table->string('status', 20);

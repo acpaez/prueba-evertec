@@ -9,22 +9,47 @@ use Symfony\Component\HttpFoundation\Request;
 
 class OrderController extends Controller
 {
+    /**
+     * @method index
+     * method in charge of rendering the order creation view
+     * @return render CreateOrder
+     */
     public function index(){
         return Inertia::render('CreateOrder');
     }
 
+     /**
+     * @method listOrder
+     * method in charge of rendering the orders list view
+     * @return render ListOrders
+     */
     public function listOrder(){
         return Inertia::render('ListOrders');
     }
 
+    /**
+     * @method listOrders
+     * method in charge of listing the orders
+     * @return collection Order
+     */
     public function listOrders(){
         return Order::all();
     }
 
+     /**
+     * @method payOrder
+     * method in charge of rendering the orders list view
+     * @return render PayOrder
+     */
     public function payOrder(){
         return Inertia::render('PayOrder');
     }
 
+     /**
+     * @method createOrder
+     * method in charge of create order
+     * @return jsonreponse status of creation
+     */
     public function createOrder(Request $request){
         $order = new Order();
         $order->customer_name=$request->customer_name;

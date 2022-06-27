@@ -12,6 +12,11 @@ class PaymentController extends Controller
 {
     use OrderTrait;
 
+     /**
+     * @method createNewPaymentRequest
+     * method in charge of connecting to the placetopay gateway and creating the payment request
+     * @return url request processing url
+     */
     public function createNewPaymentRequest(Request $request)
     {
 
@@ -43,6 +48,11 @@ class PaymentController extends Controller
         }
     }
 
+    /**
+     * @method statusPayment
+     * method in charge of verifying the status of the payment request
+     * @return colelction order
+     */
     public function statusPayment(Request $request){
         $placetopay = new PlacetoPay([
             'login' => config('placetopay.login'),
@@ -61,7 +71,12 @@ class PaymentController extends Controller
         return $order;
     }
 
-    public function request($order, $ip): array
+     /**
+     * @method request
+     * method in charge of creating the request with the necessary data so that the gateway generates the payment request
+     * @return colelction order
+     */
+    public function request($order, $ip)
     {
         $customer =  [
             'name' => $order->customer_name,
