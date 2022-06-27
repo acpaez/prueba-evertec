@@ -31,6 +31,7 @@ execute:
 
 - composer install
 - npm install
+- php artisan migrate
 
 ## About Laravel
 
